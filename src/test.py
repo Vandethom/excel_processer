@@ -2,8 +2,12 @@ import pandas as pd
 from openpyxl import Workbook
 from utils.excel_converter import WorkBook
 
+new_dataframe = pd.DataFrame()
+
+excel_export = WorkBook('../wb/DI_DRIM_IdF.xlsx', new_dataframe)
+
 df_to_convert = pd.read_excel('../wb/DI_DRIM_IdF.xlsx')
-WorkBook.export_data(df_to_convert)
+excel_export.export_data()
 
 """
 for row in range(1, 5):

@@ -10,20 +10,20 @@ working_df = pd.DataFrame()
 
 class WorkBook:
     def __init__(self, excel_input_file, data_frame):
-        self.data_frame = pd.read_excel(excel_input_file)
+        self.excel_input_file = pd.read_excel(excel_input_file)
+        self.data_frame = data_frame
 
     def export_data(self):
-
-        working_df['IdDemande'] = df_to_convert['IdDemande']
-        working_df['Rubrique'] = df_to_convert['Rubrique']
-        working_df['Date de création'] = df_to_convert['Date de création']
-        working_df['Titre'] = df_to_convert['Titre']
-        working_df['DRIM'] = df_to_convert['DRIM']
-        working_df['UE'] = df_to_convert['UE']
-        working_df['Ville'] = df_to_convert['Ville']
-        working_df['Intervenant'] = df_to_convert['Intervenant']
-        working_df['Statut de la demande'] = df_to_convert['Statut de la demande']
-        working_df['Etape Exécution'] = df_to_convert['Etape Exécution']
+        working_df['IdDemande'] = self.excel_input_file['IdDemande']
+        working_df['Rubrique'] = self.excel_input_file['Rubrique']
+        working_df['Date de création'] = self.excel_input_file['Date de création']
+        working_df['Titre'] = self.excel_input_file['Titre']
+        working_df['DRIM'] = self.excel_input_file['DRIM']
+        working_df['UE'] = self.excel_input_file['UE']
+        working_df['Ville'] = self.excel_input_file['Ville']
+        working_df['Intervenant'] = self.excel_input_file['Intervenant']
+        working_df['Statut de la demande'] = self.excel_input_file['Statut de la demande']
+        working_df['Etape Exécution'] = self.excel_input_file['Etape Exécution']
 
         working_df.fillna(value='N/A', inplace=True)
 
