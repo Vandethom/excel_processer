@@ -27,4 +27,10 @@ class WorkBook:
 
         working_df.fillna(value='N/A', inplace=True)
 
+        self.data_frame = working_df
         working_df.to_excel(f'../wb/export_{file_date}.xlsx')
+
+    def get_last_ten(self):
+        sorted_dates = self.data_frame.sort_values(by='Date de création', ascending=False)
+
+        print(sorted_dates[0:9])

@@ -1,17 +1,18 @@
-from openpyxl import load_workbook
-from openpyxl.utils import get_column_letter
+import pandas as pd
+from utils.excel_converter import WorkBook
 
-wb = load_workbook('../wb/DI_DRIM_IdF.xlsx')
-ws = wb.active
+#                   Init
 
-"""
-for row in range(1, 11):
-    for col in range(1, 5):
-        char = get_column_letter(col)
-        print(ws[char + str(row)].value)
-"""
+new_dataframe = pd.DataFrame()
 
-wb.create_sheet('Test')
-wb.save('py_report.xlsx')
+excel_export = WorkBook(
+    '../wb/DI_DRIM_IdF.xlsx',
+    new_dataframe
+)
 
-print(wb)
+df_to_convert = pd.read_excel('../wb/DI_DRIM_IdF.xlsx')
+
+#                   Methods
+
+excel_export.export_data()
+excel_export.get_last_ten()
