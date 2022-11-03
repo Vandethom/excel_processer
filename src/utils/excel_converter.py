@@ -31,6 +31,8 @@ class WorkBook:
         working_df.to_excel(f'../wb/export_{file_date}.xlsx')
 
     def get_last_ten(self):
-        sorted_dates = self.data_frame.sort_values(by='Date de création', ascending=False)
+        requests_by_date = self.excel_input_file.sort_values(by='Date de création', ascending=False)
+        last_ten_requests = requests_by_date[0:9]
 
-        print(sorted_dates[0:9])
+        last_ten_requests.to_excel(f'../wb/DI-par-date_{file_date}.xlsx')
+        print(last_ten_requests[0:9])
