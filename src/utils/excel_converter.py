@@ -36,3 +36,16 @@ class WorkBook:
 
         last_ten_requests.to_excel(f'../wb/DI-par-date_{file_date}.xlsx')
         print(last_ten_requests[0:9])
+
+    def filter_by(self, criteria):
+        filtered_dataframe = self.excel_input_file[criteria]
+
+        print(filtered_dataframe)
+
+    def filter_by_multiple(self, criterias):
+        new_dataframe = pd.DataFrame()
+
+        for criteria in criterias:
+            new_dataframe[criteria] = self.excel_input_file[criteria]
+
+        print(new_dataframe)

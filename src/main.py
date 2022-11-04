@@ -10,9 +10,7 @@ excel_export = WorkBook(
     new_dataframe
 )
 
-df_to_convert = pd.read_excel('../wb/DI_DRIM_IdF.xlsx')
-
 #                   Methods
 
 # excel_export.export_data()
-excel_export.get_last_ten()
+excel_export.filter_by_multiple(['Rue', 'UE', 'Ville'])
