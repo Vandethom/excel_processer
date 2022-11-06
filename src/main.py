@@ -5,6 +5,11 @@ from utils.excel_converter import WorkBook
 
 new_dataframe = pd.DataFrame()
 
+df = WorkBook(
+    '../wb/analysis.xlsx',
+    new_dataframe
+)
+
 excel_export = WorkBook(
     '../wb/DI_DRIM_IdF.xlsx',
     new_dataframe
@@ -13,4 +18,6 @@ excel_export = WorkBook(
 #                   Methods
 
 # excel_export.export_data()
-excel_export.filter_by_multiple(['Rue', 'UE', 'Ville'])
+# excel_export.get_count('Rue')
+
+df.get_weekly_ongoing_requests()
