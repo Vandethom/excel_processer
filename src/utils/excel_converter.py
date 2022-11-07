@@ -61,8 +61,18 @@ class WorkBook:
         print(count)
 
     def get_weekly_ongoing_requests(self):
-        transpo = self.read_file('Transposition')
+        transpo = pd.DataFrame(self.read_file('Transposition'))
 
-        columns = transpo['Année Créa']
+        filtered_by_date = transpo.loc[
+            (transpo['Année Créa'] == 2022)
+                & (transpo['Semaine Création'] == 2)
+                & (transpo['Pilote 2'] == 'Esset')
+                & (transpo['Quanti Entrant'] == 'Entrant'),
+            ['Année Créa',
+             'Semaine Création',
+             'Quanti Entrant',
+             'Pilote 2']
+        ]
 
-        print(columns)
+        print(filtered_by_date)
+        filtered_by_date.to_excel('../wb/filtered.xlsx')
