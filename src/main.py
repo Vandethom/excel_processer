@@ -20,4 +20,4 @@ excel_export = WorkBook(
 # excel_export.export_data()
 # excel_export.get_count('Rue')
 
-df.get_weekly_ongoing_requests()
+df.print_excel_weekly_ongoing_requests()

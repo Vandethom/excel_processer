@@ -1,4 +1,5 @@
 from datetime import datetime
+from openpyxl import load_workbook
 import pandas as pd
 
 df_to_convert = pd.read_excel('../wb/DI_DRIM_IdF.xlsx')
@@ -74,5 +75,19 @@ class WorkBook:
              'Pilote 2']
         ]
 
-        print(filtered_by_date)
         filtered_by_date.to_excel('../wb/filtered.xlsx')
+        return filtered_by_date
+
+    def print_excel_weekly_ongoing_requests(self):
+        self.get_weekly_ongoing_requests()
+        wb = load_workbook('../wb/filtered.xlsx')
+        ws = wb.active
+
+        total = len(ws['B':'B']) - 1
+        print('Total is here :::    ', total)
+
+        # range = ws['A2' : 'C4']
+
+        # result = pd.DataFrame(range)
+
+        # result.to_excel('../wb/test.xlsx')
