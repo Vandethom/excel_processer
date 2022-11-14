@@ -79,15 +79,32 @@ class WorkBook:
         return filtered_by_date
 
     def print_excel_weekly_ongoing_requests(self):
-        self.get_weekly_ongoing_requests()
-        wb = load_workbook('../wb/filtered.xlsx')
-        ws = wb.active
+        transpo = self.read_file('Transposition')
 
-        total = len(ws['B':'B']) - 1
-        print('Total is here :::    ', total)
+        weeks = list(dict.fromkeys(list(transpo['Semaine Création'])))
+        weeks[:] = (value for value in weeks if value != '#ERROR!')
+        weeks = sorted(weeks)
+        weeks = weeks + weeks + weeks
 
-        # range = ws['A2' : 'C4']
+        # years = list(dict.fromkeys((list(transpo['Année Créa']))))
+        # years_length = len(years)
 
-        # result = pd.DataFrame(range)
+        df = pd.DataFrame(columns=['Année',
+                                   'Semaine',
+                                   'Entrant',
+                                   'Clôturée',
+                                   'En Cours',
+                                   'En cours N-1']
+                          )
+        df['Semaine'] = weeks
 
-        # result.to_excel('../wb/test.xlsx')
+        """
+        
+        to_do
+        
+        df.loc[[ double array to return df and add 2022 to x:x 2021 to y:y etc for 53weeks each time ]]
+        
+        """
+
+        df.to_excel('../wb/test_table.xlsx')
+
