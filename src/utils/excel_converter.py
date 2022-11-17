@@ -86,16 +86,11 @@ class WorkBook:
         weeks = sorted(weeks)
         weeks = weeks + weeks + weeks
 
-        # years = list(dict.fromkeys((list(transpo['Année Créa']))))
-        # years_length = len(years)
+        years = ['2020'] * 53 + ['2021'] * 53 + ['2022'] * 53
+        print(years)
 
-        df = pd.DataFrame(columns=['Année',
-                                   'Semaine',
-                                   'Entrant',
-                                   'Clôturée',
-                                   'En Cours',
-                                   'En cours N-1']
-                          )
+        df = pd.DataFrame()
+        df.insert(0, 'Année', years)
         df['Semaine'] = weeks
 
         """
